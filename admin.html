@@ -1,19 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AL FALAQ SUPER MARKET - Admin</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        h1 {
+            color: green;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🛒 AL FALAQ SUPER MARKET</h1>
+
+    <h2>Admin Panel</h2>
+
+    <input id="productName" type="text" placeholder="Product Name">
+
+    <input id="productPrice" type="number" placeholder="Price (AED)">
+
+    <input id="productImage" type="text" placeholder="Image URL">
+
+    <button onclick="addProduct()">➕ Add Product</button>
+
+    <div id="message"></div>
+
+</div>
+
 <script>
+
 const API_URL = "https://script.google.com/macros/s/AKfycbwZxAZASeYhD9Vo3v4eJxKVGy3vKx5XXY_luG3EKn3O7q12qmkFOTyZ56mWoDPoauFT/exec";
 
 function addProduct() {
 
-    const name = document.getElementById("productName").value.trim();
+    const name = document.getElementById("productName").value;
     const price = document.getElementById("productPrice").value;
-    const image = document.getElementById("productImage").value.trim();
-    const message = document.getElementById("message");
+    const image = document.getElementById("productImage").value;
 
     if (name === "" || price === "") {
-        message.innerText = "Please enter product name and price.";
+        document.getElementById("message").innerText =
+            "Please enter product name and price.";
         return;
     }
 
-    message.innerText = "⏳ Adding product...";
+    document.getElementById("message").innerText =
+        "⏳ Adding product...";
 
     fetch(API_URL, {
         method: "POST",
@@ -27,19 +101,28 @@ function addProduct() {
     .then(data => {
 
         if (data.success) {
-            message.innerText = "✅ Product added successfully!";
+            document.getElementById("message").innerText =
+                "✅ Product added successfully!";
 
             document.getElementById("productName").value = "";
             document.getElementById("productPrice").value = "";
             document.getElementById("productImage").value = "";
         } else {
-            message.innerText = "❌ Product could not be added.";
+            document.getElementById("message").innerText =
+                "❌ " + data.message;
         }
 
     })
     .catch(error => {
-        console.error(error);
-        message.innerText = "❌ Connection error. Please try again.";
+
+        console.log(error);
+
+        document.getElementById("message").innerText =
+            "❌ Connection error";
     });
 }
+
 </script>
+
+</body>
+</html>
