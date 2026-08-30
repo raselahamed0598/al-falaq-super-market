@@ -289,3 +289,114 @@ document.addEventListener(
 
     }
 );
+// ===============================
+// LOAD PRODUCTS FROM GOOGLE SHEET
+// ===============================
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbwZxAZASeYhD9Vo3v4eJxKVGy3vKx5XXY_luG3EKn3O7q12qmkFOTyZ56mWoDPoauFT/exec";
+
+function loadProductsFromSheet() {
+
+```
+fetch(API_URL)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(products) {
+
+        console.log("Products from Google Sheet:", products);
+
+        let productsContainer =
+            document.querySelector(".products");
+
+        if (!productsContainer) {
+            console.log("Products container not found.");
+            return;
+        }
+
+        productsContainer.innerHTML = "";
+
+        products.forEach(function(product) {
+
+            let name =
+                product.name ||
+                product.Name ||
+                product.product ||
+                product.Product ||
+                "";
+
+            let price =
+                Number(
+                    product.price ||
+                    product.Price ||
+                    0
+                );
+
+            let image =
+                product.image ||
+                product.Image ||
+                "";
+
+            if (name === "") {
+                return;
+            }
+
+            let productDiv =
+                document.createElement("div");
+
+            productDiv.className = "product";
+
+            productDiv.innerHTML =
+
+                (image
+                    ? "<img src='" + image + "' alt='" + name + "'>"
+                    : "") +
+
+                "<h3>" +
+                name +
+                "</h3>" +
+
+                "<p>AED " +
+                price.toFixed(2) +
+                "</p>" +
+
+                "<button onclick=\"addToCart('" +
+                name.replace(/'/g, "\\'") +
+                "', " +
+                price +
+                ")\">" +
+
+                "Add to Cart 🛒" +
+
+                "</button>";
+
+            productsContainer.appendChild(productDiv);
+
+        });
+
+    })
+    .catch(function(error) {
+
+        console.error(
+            "Google Sheet Product Error:",
+            error
+        );
+
+    });
+```
+
+}
+
+// Load products when website opens
+document.addEventListener(
+"DOMContentLoaded",
+function() {
+
+```
+    loadProductsFromSheet();
+
+}
+```
+
+);
