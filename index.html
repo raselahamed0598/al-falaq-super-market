@@ -1,0 +1,530 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AL FALAQ SUPER MARKET</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- WhatsApp Floating Button -->
+    <a
+        href="https://wa.me/971521104489"
+        class="whatsapp-button"
+        target="_blank"
+        aria-label="Chat with us on WhatsApp">
+        💬
+    </a>
+
+
+    <!-- Header -->
+    <header>
+
+        <div class="logo">
+
+            <div class="logo-icon">🛒</div>
+
+            <div>
+                <h2>AL FALAQ</h2>
+                <span>SUPER MARKET</span>
+            </div>
+
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#cart">Cart 🛒</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+    </header>
+
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>Welcome to AL FALAQ SUPER MARKET</h1>
+
+            <p>
+                Your trusted supermarket for fresh groceries,
+                food, drinks and daily essentials.
+            </p>
+
+            <button onclick="shopNow()">
+                Shop Now
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Special Offer -->
+    <section class="offer">
+
+        <div class="offer-content">
+
+            <span>🔥 SPECIAL OFFER</span>
+
+            <h2>Fresh Products at Great Prices!</h2>
+
+            <p>
+                Shop now and get the best deals at
+                AL FALAQ SUPER MARKET.
+            </p>
+
+            <button onclick="shopNow()">
+                Shop Now
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Products -->
+    <section class="products" id="products">
+
+        <h2>Our Products</h2>
+
+
+        <!-- Search -->
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Search products..."
+                onkeyup="searchProducts()">
+
+        </div>
+
+
+        <!-- Product Container -->
+        <div class="product-container">
+
+
+            <!-- White Rice -->
+            <div class="product">
+
+                <div class="product-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6"
+                        alt="White Rice">
+
+                </div>
+
+                <h3>White Rice</h3>
+
+                <p>5 KG</p>
+
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+
+                <div class="price">
+
+                    <del>AED 30</del>
+
+                    <strong>AED 25</strong>
+
+                </div>
+
+                <button onclick="addToCart('White Rice', 25)">
+                    Add to Cart
+                </button>
+
+            </div>
+
+
+            <!-- Fresh Milk -->
+            <div class="product">
+
+                <div class="product-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1563636619-e9143da7973b"
+                        alt="Fresh Milk">
+
+                </div>
+
+                <h3>Fresh Milk</h3>
+
+                <p>1 Liter</p>
+
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+
+                <div class="price">
+
+                    <del>AED 9</del>
+
+                    <strong>AED 7</strong>
+
+                </div>
+
+                <button onclick="addToCart('Fresh Milk', 7)">
+                    Add to Cart
+                </button>
+
+            </div>
+
+
+            <!-- Cooking Oil -->
+            <div class="product">
+
+                <div class="product-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5"
+                        alt="Cooking Oil">
+
+                </div>
+
+                <h3>Cooking Oil</h3>
+
+                <p>2 Liter</p>
+
+                <div class="rating">⭐⭐⭐⭐</div>
+
+                <div class="price">
+
+                    <del>AED 22</del>
+
+                    <strong>AED 18</strong>
+
+                </div>
+
+                <button onclick="addToCart('Cooking Oil', 18)">
+                    Add to Cart
+                </button>
+
+            </div>
+
+
+            <!-- Sugar -->
+            <div class="product">
+
+                <div class="product-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1581441363689-1f3c3c414635"
+                        alt="Sugar">
+
+                </div>
+
+                <h3>Sugar</h3>
+
+                <p>2 KG</p>
+
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+
+                <div class="price">
+
+                    <del>AED 10</del>
+
+                    <strong>AED 8</strong>
+
+                </div>
+
+                <button onclick="addToCart('Sugar', 8)">
+                    Add to Cart
+                </button>
+
+            </div>
+
+
+            <!-- Drinking Water -->
+            <div class="product">
+
+                <div class="product-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1548839140-29a749e1cf4d"
+                        alt="Drinking Water">
+
+                </div>
+
+                <h3>Drinking Water</h3>
+
+                <p>1.5 Liter</p>
+
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+
+                <div class="price">
+
+                    <del>AED 3</del>
+
+                    <strong>AED 2</strong>
+
+                </div>
+
+                <button onclick="addToCart('Drinking Water', 2)">
+                    Add to Cart
+                </button>
+
+            </div>
+
+
+            <!-- Fresh Apples -->
+            <div class="product">
+
+                <div class="product-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6"
+                        alt="Fresh Apples">
+
+                </div>
+
+                <h3>Fresh Apples</h3>
+
+                <p>1 KG</p>
+
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+
+                <div class="price">
+
+                    <del>AED 13</del>
+
+                    <strong>AED 10</strong>
+
+                </div>
+
+                <button onclick="addToCart('Fresh Apples', 10)">
+                    Add to Cart
+                </button>
+
+            </div>
+
+
+            <!-- Fresh Bananas -->
+            <div class="product">
+
+                <div class="product-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e"
+                        alt="Fresh Bananas">
+
+                </div>
+
+                <h3>Fresh Bananas</h3>
+
+                <p>1 KG</p>
+
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+
+                <div class="price">
+
+                    <del>AED 8</del>
+
+                    <strong>AED 6</strong>
+
+                </div>
+
+                <button onclick="addToCart('Fresh Bananas', 6)">
+                    Add to Cart
+                </button>
+
+            </div>
+
+
+            <!-- Basmati Rice -->
+            <div class="product">
+
+                <div class="product-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1586201375761-83865001e31c"
+                        alt="Basmati Rice">
+
+                </div>
+
+                <h3>Basmati Rice</h3>
+
+                <p>5 KG</p>
+
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+
+                <div class="price">
+
+                    <del>AED 40</del>
+
+                    <strong>AED 35</strong>
+
+                </div>
+
+                <button onclick="addToCart('Basmati Rice', 35)">
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Categories -->
+    <section class="categories">
+
+        <h2>Shop by Category</h2>
+
+        <div class="category-container">
+
+            <div class="category">
+                🥦
+                <h3>Fresh Vegetables</h3>
+            </div>
+
+            <div class="category">
+                🍎
+                <h3>Fresh Fruits</h3>
+            </div>
+
+            <div class="category">
+                🥛
+                <h3>Dairy Products</h3>
+            </div>
+
+            <div class="category">
+                🥤
+                <h3>Drinks</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Shopping Cart -->
+    <section class="cart" id="cart">
+
+        <h2>🛒 Shopping Cart</h2>
+
+        <div id="cart-items">
+
+            <p>Your cart is empty.</p>
+
+        </div>
+
+        <h3>
+            Total: AED
+            <span id="cart-total">0</span>
+        </h3>
+
+        <button
+            class="checkout-btn"
+            onclick="checkout()">
+
+            Checkout
+
+        </button>
+
+    </section>
+
+
+    <!-- Checkout -->
+    <section
+    id="checkout-form"
+    class="checkout-form"
+    style="display:none;">
+
+        <h2>🧾 Checkout</h2>
+
+        <input
+            type="text"
+            id="customer-name"
+            placeholder="Your Name">
+
+        <input
+            type="tel"
+            id="customer-phone"
+            placeholder="Phone Number">
+
+        <textarea
+            id="customer-address"
+            placeholder="Delivery Address"></textarea>
+
+        <button onclick="placeOrder()">
+            Place Order
+        </button>
+
+    </section>
+
+
+    <!-- Contact -->
+    <section
+        class="contact"
+        id="contact">
+
+        <h2>Contact Us</h2>
+
+        <div class="contact-container">
+
+            <div class="contact-box">
+
+                <div class="icon">📱</div>
+
+                <h3>WhatsApp</h3>
+
+                <p>+971 52 110 4489</p>
+
+            </div>
+
+
+            <div class="contact-box">
+
+                <div class="icon">📍</div>
+
+                <h3>Location</h3>
+
+                <p>UAE</p>
+
+            </div>
+
+
+            <div class="contact-box">
+
+                <div class="icon">🛒</div>
+
+                <h3>Shop</h3>
+
+                <p>AL FALAQ SUPER MARKET</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 AL FALAQ SUPER MARKET
+        </p>
+
+        <p>
+            Your Daily Shopping Partner
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+```
