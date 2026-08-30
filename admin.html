@@ -1,0 +1,130 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AL FALAQ - Admin Panel</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #198754;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 20px;
+            background: #198754;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #146c43;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🛒 AL FALAQ SUPER MARKET</h1>
+
+    <h2>Admin Panel</h2>
+
+    <label>Product Name</label>
+    <input type="text" id="productName" placeholder="Enter product name">
+
+    <label>Price (AED)</label>
+    <input type="number" id="productPrice" placeholder="Enter price">
+
+    <label>Product Image URL</label>
+    <input type="text" id="productImage" placeholder="Paste image URL">
+
+    <button onclick="addProduct()">➕ Add Product</button>
+
+    <div id="message"></div>
+
+</div>
+
+<script>
+
+function addProduct() {
+
+    let name = document.getElementById("productName").value;
+    let price = document.getElementById("productPrice").value;
+    let image = document.getElementById("productImage").value;
+
+    if (name === "" || price === "") {
+        document.getElementById("message").innerText =
+            "Please enter product name and price.";
+        return;
+    }
+
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+
+    products.push({
+        name: name,
+        price: Number(price),
+        image: image
+    });
+
+    localStorage.setItem("products", JSON.stringify(products));
+
+    document.getElementById("productName").value = "";
+    document.getElementById("productPrice").value = "";
+    document.getElementById("productImage").value = "";
+
+    document.getElementById("message").innerText =
+        "✅ Product added successfully!";
+}
+
+</script>
+
+</body>
+</html>
+```
