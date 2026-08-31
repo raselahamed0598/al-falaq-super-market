@@ -400,3 +400,93 @@ function() {
 ```
 
 );
+// ===============================
+// LOAD PRODUCTS FROM GOOGLE SHEET
+// ===============================
+
+const API_URL =
+"https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnSKNm0kSCNbZM4QyjfSdRn8VhCfjLM45zSsv_5SPKXF43iijHggu_KvK5mxdgXeGLWuDYtOABaJHX_gmwx058WY3i3m1rN50m9bit9TbXxmQ-2y5WzYdYExrOXy0Roym8yH5Mda-SoTOvZJTZoJGGuLcAI0iglAnOdha4HCv_GCdKUZw3rsxYdxmmhrt6xi-uT3vvp03tKysCKvfHSxzS034lBZ3Z0gNbBOP6wKIVPp3XRA69Bo0g4QwUtL3MEDleRiYL4OLX5LP1RB-0LZ5suXMV8DYw&lib=MKoYzJg_XXJfXRO4TY7AEAA0pK7JDScbZ";
+
+function loadProductsFromSheet() {
+
+```
+fetch(API_URL)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(products) {
+
+        console.log("Google Sheet Products:", products);
+
+        var container =
+            document.querySelector(".products");
+
+        if (!container) {
+            console.log("Products container not found.");
+            return;
+        }
+
+        container.innerHTML = "";
+
+        products.forEach(function(product) {
+
+            var name = product.name;
+            var price = Number(product.price);
+            var image = product.image || "";
+
+            var div =
+                document.createElement("div");
+
+            div.className = "product";
+
+            div.innerHTML =
+                (image
+                    ? "<img src='" + image + "' alt='" + name + "'>"
+                    : "") +
+
+                "<h3>" + name + "</h3>" +
+
+                "<p>AED " +
+                price.toFixed(2) +
+                "</p>" +
+
+                "<button onclick=\"addToCart('" +
+                name.replace(/'/g, "\\'") +
+                "'," +
+                price +
+                ")\">" +
+
+                "Add to Cart 🛒" +
+
+                "</button>";
+
+            container.appendChild(div);
+
+        });
+
+    })
+    .catch(function(error) {
+
+        console.error(
+            "Product loading error:",
+            error
+        );
+
+    });
+```
+
+}
+
+// Load Google Sheet products
+document.addEventListener(
+"DOMContentLoaded",
+function() {
+
+```
+    loadProductsFromSheet();
+
+}
+```
+
+);
+
